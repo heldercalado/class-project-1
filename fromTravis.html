@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+​
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+</head>
+​
+<body>
+  <h1>Check the console to see the data</h1>
+</body>
+<script>
+  var corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/"
+  var queryUrl = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo"
+  var corsAnywhereUrlPlusQueryUrl = corsAnywhereUrl + queryUrl;
+  
+  $.ajax({
+    url: corsAnywhereUrlPlusQueryUrl,
+    method: "GET"
+  }).then(function (response) {
+    console.log(response);
+  }).catch(function (error) {
+    console.error(error);
+  });
+</script>
+​
+</html>
+Collapse 
+
+Message Input
+
+Message Travis Thompson, Helder Calado, Chris, Leslie Morris
