@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+
+
+</head>
+
+<body>
+
+    <div id="demo">
+
+        <h2>The XMLHttpRequest Object</h2>
+        <input type="text" id="queryval">
+        <button type="button" id="btn1">Change Content</button>
+    </div>
+
+
+</body>
+<script>
+    $(document).ready(function () {
+
+        $("#btn1").on("click", function () {
+            var test = $('#queryval').val();
+
+            var myUrl =
+                'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo&address=' +
+                test + '&sensor=false'
+            // loadDoc(myUrl , myFunction);
+            anotherquery(myUrl);
+        })
+
+    })
+
+
+    
+
+
+
+    function anotherquery(requestUrl) {
+        $.ajax({
+            url: requestUrl,
+            method: 'GET',
+        }).done(function (result) {
+            //console.log(result);
+            console.log(result)
+            console.log("Request Status: " + result.status);
+            console.log("Place Name: " + result.results[0].formatted_address);
+            console.log("Place ID: " + result.results[0].place_id);
+            console.log("Lat: " + result.results[0].geometry.location.lat);
+            console.log("Lng: " + result.results[0].geometry.location.lng);
+             myurl = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+result.results[0].place_id+"&fields=photos,name,rating,formatted_phone_number&key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo"
+            
+                "&inputtype=textquery&fields=photos,formatted_address&key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo&address"
+            var corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/"
+            $.ajax({
+                url: corsAnywhereUrl + myurl,
+                method: 'GET',
+            }).done(function (result) {
+                //console.log(result);
+                console.log(result)
+                
+                for (var i = 0 ; i < result.result.photos.length ; i++){
+                myurl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" +
+                    result.result.photos[i].photo_reference +
+                    "&key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo"
+                    $("#demo").append("<img src='"+myurl+"'>");
+                
+                }
+                
+                
+                 }).fail(function (err) {
+                throw err;
+            });
+
+        }).fail(function (err) {
+            throw err;
+        });
+    }
+    </script>
+
+</html>
