@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <title>Document</title>
+
+</head>
+<style>
+    .body{
+    background-image: url("https://wallpapertag.com/wallpaper/full/b/4/8/893459-cool-high-quality-background-images-1920x1080-for-retina.jpg");
+}
+.jumbotron{
+    background-image: url("https://wallpapertag.com/wallpaper/full/b/4/8/893459-cool-high-quality-background-images-1920x1080-for-retina.jpg");
+
+  
+}
+
+.display-4{
+    font-weight: bolder;
+    color: aquamarine;
+    
+}
+.lead{
+    font-weight: bold;
+    color:bisque;
+    
+}
+
+#collapseOne{
+    height: 200px;
+}
+</style>
+
+<body class="body">
+    <br>
+    <br>
+<form class="container">
+        <div class="row">
+            <div class="col">
+
+
+                <input type="search" class="form-control" placeholder="Search" id="queryval" aria-label="Search">
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="btn1" type="submit">Search</button>
+                </div>
+            </div>
+    </form>
+
+    <div class="container">
+    
+    <!-- <h1 class="display-4">You've Booked Your Trip!</h1>
+            <p class="lead">Now Explore Your Destination...</p> -->
+
+    <br>
+    <br>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card" style="width: 28rem;">
+                    <img class="card-img-top" src="http://placehold.it/150x150" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Destination Name</h5>
+                        <p class="card-text">Current weather conditions</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item1">census info</li>
+                        <li class="list-group-item2">census info</li>
+                        <li class="list-group-item3">census info</li>
+                    </ul>
+                    
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    <i class="fas fa-sun">Weather Forecast</i>
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <ul>
+                                            <li id="city"></li>
+                                            <li id='temp'></li>
+                                            <li id="humidity"></li>
+                                            <li id="wind"></li>
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                                    aria-expanded="false" aria-controls="collapseTwo">
+                                    <i class="far fa-images"> Pictures </i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+
+                                    </div>
+                                </div>
+                                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner" id="target">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                        data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <i class="fas fa-calendar-alt"> Events</i>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <ul>
+
+                                        <li id="events"></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingFour">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                        data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        <i class="fas fa-utensils"> Restaurants</i>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                    richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                    brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                                    sunt
+                                    aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch
+                                    et.
+                                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                                    sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
+                                    craft
+                                    beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
+                                    heard
+                                    of them accusamus labore sustainable VHS.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingFive">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                        data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                        <i class="fas fa-landmark"> National Parks</i>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                    richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                    brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+                                    sunt
+                                    aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch
+                                    et.
+                                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
+                                    sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
+                                    craft
+                                    beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
+                                    heard
+                                    of them accusamus labore sustainable VHS.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- end of col -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-lg-12">
+            <br>
+            <div class="well">
+                <div id="myCarousel" class="carousel slide">
+                    <br>
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="row">
+                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image"
+                                            class="img-responsive"></a>
+                                </div>
+                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image"
+                                            class="img-responsive"></a>
+                                </div>
+                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image"
+                                            class="img-responsive"></a>
+                                </div>
+                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image"
+                                            class="img-responsive"></a>
+                                </div>
+                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image"
+                                            class="img-responsive"></a>
+                                </div>
+                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image"
+                                            class="img-responsive"></a>
+                                </div>
+                            </div>
+                            <!--/row-->
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <div class="modal" id="exampleModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Loading your results , please wait</h5>
+                    </div>
+
+                    <div class="modal-body">
+                        <img src="./Loading_icon.gif" alt="" srcset="">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+</body>
+
+<script>
+
+    $(document).ready(function () {
+        $('.carousel').carousel()
+        $("#btn1").on("click", function (e) {
+            e.preventDefault();
+
+            var test = $('#queryval').val();
+
+            var myUrl =
+                'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo&address=city%20of%20' +
+                test + '&sensor=false'
+            // loadDoc(myUrl , myFunction);
+            anotherquery(myUrl);
+        })
+
+    })
+
+
+
+
+
+
+    function anotherquery(requestUrl) {
+        $.ajax({
+            url: requestUrl,
+            method: 'GET',
+        }).done(function (result) {
+            //console.log(result);
+            console.log(result)
+            console.log("Request Status: " + result.status);
+            console.log("Place Name: " + result.results[0].formatted_address);
+            console.log("Place ID: " + result.results[0].place_id);
+            console.log("Lat: " + result.results[0].geometry.location.lat);
+            console.log("Lng: " + result.results[0].geometry.location.lng);
+            getCurrentWeather(result.results[0].formatted_address);
+            eventBrite(result.results[0].geometry.location.lat, result.results[0].geometry.location.lng);
+            myurl = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + result.results[0].place_id + "&fields=photos,name,rating,formatted_phone_number&key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo"
+
+            "&inputtype=textquery&fields=photos,formatted_address&key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo&address"
+            var corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/"
+            $.ajax({
+                url: corsAnywhereUrl + myurl,
+                method: 'GET',
+            }).done(function (result) {
+                //console.log(result);
+
+                console.log(result)
+                $("#target").empty();
+                for (var i = 0; i < result.result.photos.length; i++) {
+                    myurl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" +
+                        result.result.photos[i].photo_reference +
+                        "&key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo"
+                    if (i === 0) {
+                        $("#target").append("<div class='carousel-item active'><img class='d-block w-100' src='" + myurl + "' alt='First slide'></div>");
+                    } else {
+                        $("#target").append("<div class='carousel-item'><img class='d-block w-100' src='" + myurl + "' alt='First slide'></div>");
+
+                    }
+
+                    //$("#demo").append("<img src='"+myurl+"'>");
+
+                }
+
+
+            }).fail(function (err) {
+                throw err;
+            });
+
+        }).fail(function (err) {
+            throw err;
+        });
+    }
+    function getCurrentWeather(city) {
+        console.log(city);
+        var APIKey = "a1419d3616a13603e1c5b962606c26e2";
+
+        // Here we are building the URL we need to query the database
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
+
+        // Here we run our AJAX call to the OpenWeatherMap API
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+            // We store all of the retrieved data inside of an object called "response"
+            .then(function (response) {
+
+                // Log the queryURL
+                console.log(queryURL);
+
+                // Log the resulting object
+                console.log(response);
+
+                // Transfer content to HTML
+                $("#city").text("City:" + response.name + " Weather Details:");
+                $("#wind").text("Wind Speed: " + response.wind.speed);
+                $("#humidity").text("Humidity: " + response.main.humidity);
+                $("#temp").text("Temperature (F) " + response.main.temp);
+
+                // Log the data in the console as well
+                console.log(city);
+                console.log("Wind Speed: " + response.wind.speed);
+                console.log("Humidity: " + response.main.humidity);
+                console.log("Temperature (F): " + response.main.temp);
+            });
+
+
+    }
+
+    function eventBrite(argLatitude, argLongitude) {
+
+        var token = 'SRIRFU3BOMH4X35QFAGN';
+        var $events = $("#events");
+
+        $.get('https://www.eventbriteapi.com/v3/events/search/?token=' + token + '&location.latitude=' + argLatitude + '&location.longitude=' + argLongitude + '&expand=venue', function (res) {
+            if (res.events.length) {
+                var s = "<ul class='eventList'>";
+                for (var i = 0; i < res.events.length; i++) {
+                    var event = res.events[i];
+                    console.dir(event);
+                    s += "<li><a href='" + event.url + "'>" + event.name.text + "</a> - " + event.description.text + "</li>";
+                }
+                s += "</ul>";
+                $events.html(s);
+                $('#exampleModal').modal('toggle');
+            } else {
+                $events.html("<p>Sorry, there are no upcoming events.</p>");
+            }
+        });
+
+    }
+</script>
+
+</html>
