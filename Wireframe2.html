@@ -44,7 +44,7 @@
 <body class="body">
     <br>
     <br>
-<form class="container">
+    <form class="container">
         <div class="row">
             <div class="col">
 
@@ -61,12 +61,12 @@
     </form>
 
     <div class="container">
-    
-    <!-- <h1 class="display-4">You've Booked Your Trip!</h1>
+
+        <!-- <h1 class="display-4">You've Booked Your Trip!</h1>
             <p class="lead">Now Explore Your Destination...</p> -->
 
-    <br>
-    <br>
+        <br>
+        <br>
 
         <div class="row">
             <div class="col-lg-6">
@@ -79,11 +79,35 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item1">census info</li>
                         <li class="list-group-item2">census info</li>
-                        <li class="list-group-item3">census info</li>
+                        <li class="pAccordian" id="accordianExample">
+                            <div class="card2">
+                                <div class="card2-header" id="pHeadingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#pCollapseOne"
+                                            aria-expanded="true" aria-controls="pCollapseOne">
+                                            <i class="fas fa-sun">Parks & Recreation</i>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="pCollapseOne" class="collapse" aria-labelledby="pHeadingOne" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <ul>
+                                            <li id="city"></li>
+                                            <li id='temp'></li>
+                                            <li id="humidity"></li>
+                                            <li id="wind"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
-                    
                 </div>
+                </li>
+                </ul>
+
             </div>
+
 
             <div class="col-lg-6">
                 <div class="accordion" id="accordionExample">
@@ -215,6 +239,7 @@
             </div>
         </div>
     </div>
+    </div>
     <br>
     <br>
     <div class="row">
@@ -260,20 +285,20 @@
     </div>
     </div>
     <div class="modal" id="exampleModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
 
-                    <div class="modal-header">
-                        <h5 class="modal-title">Loading your results , please wait</h5>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src="./Loading_icon.gif" alt="" srcset="">
-                    </div>
-
+                <div class="modal-header">
+                    <h5 class="modal-title">Loading your results , please wait</h5>
                 </div>
+
+                <div class="modal-body">
+                    <img src="./Loading_icon.gif" alt="" srcset="">
+                </div>
+
             </div>
         </div>
+    </div>
 
 </body>
 
