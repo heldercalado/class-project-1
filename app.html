@@ -204,12 +204,19 @@
       console.log(result.results[0].address_components[2].short_name, result.results[0].address_components[0].long_name);
 
 
-      myurl = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + result.results[0].place_id + "&fields=photos,name,rating,formatted_phone_number&key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo"
 
+<<<<<<< HEAD
 
       var corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/"
       $.ajax({
         url: corsAnywhereUrl + myurl,
+=======
+ myurl = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + result.results[0].place_id + "&fields=photos,name,rating,formatted_phone_number&key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo"
+ "&inputtype=textquery&fields=photos,formatted_address&key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo&address"
+var corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/"
+       $.ajax({
+       url: corsAnywhereUrl + myurl,
+>>>>>>> a2b47ef79ab72e3b53a2fcfc3ab5618348ebe568
         method: 'GET',
       }).done(function (result) {
         //console.log(result);

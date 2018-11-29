@@ -7,20 +7,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-        crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
-    <title>Em Project 1</title>
+    <title>API data</title>
+    <script type="text/javascript" src="zomandnpsmoreapi.js"></script>
 
 </head>
 
 <body>
 
     <section class="container">
-        <h1> This is a starter Page</h1>
-        <h3 id="photohere">making sure everything is connected</h3>
+        <h1> Getting Shit Done </h1>
+        <h3>making sure everything is connected</h3>
     </section>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <ul id="on-screen"></ul>
+            </div>
+            <div class="col-sm-6">
+                <div id="restaurant"> </div>
+            </div>
+        </div>
+        <br>
+    </div>
+
 
     <style>
         h3 {
@@ -28,46 +40,48 @@
         }
     </style>
 
-    <script>
 
-        // NPS query scripts and API key
-        var npsBaseUrl = "https://api.nps.gov/api/v1";
-        var npsCallState = "/parks&stateCode=CA&key=";
-        var npsCallVC = "/visitorcenters&stateCode=CA&key=";
-        var npsKey = "qpWelJUKpo0rWmkucsjPsEXnvkdRfGwQvja86FWo";
 
-        // Call the NPS API
-        $.ajax({
-            url: npsBaseUrl + npsCallState + npsKey,
-            method: "GET",
-        }).then(function (response) {
-            console.log(response);
-        });
 
-        $.ajax({
-            url: npsBaseUrl + npsCallVC + npsKey,
-            method: "GET",
-        }).then(function (response2) {
-            console.log(response2);
-        });
+    <!-- 
+        // // NPS query scripts and API key
+        // var npsBaseUrl = "https://api.nps.gov/api/v1";
+        // var npsCallState = "/parks&stateCode=CA&key=";
+        // var npsCallVC = "/visitorcenters&stateCode=CA&key=";
+        // var npsKey = "qpWelJUKpo0rWmkucsjPsEXnvkdRfGwQvja86FWo";
 
-        // Zomato query scripts and API key
-        var zomBaseUrl = "https://developers.zomato.com/api/v2.1";
-        var zomCallCity = "/cities&key=";
-        var zomKey = "04dffe13574d2caddf0a86ffa64f32a0";
+        // // Call the NPS API
+        // $.ajax({
+        //     url: npsBaseUrl + npsCallState + npsKey,
+        //     method: "GET",
+        // }).then(function (response) {
+        //     console.log(response);
+        // });
 
-        var corsAnywhere = "https://cors-anywhere.herokuapp.com/";
+        // $.ajax({
+        //     url: npsBaseUrl + npsCallVC + npsKey,
+        //     method: "GET",
+        // }).then(function (response2) {
+        //     console.log(response2);
+        // });
 
-        $.ajax({
-            url:  "https://developers.zomato.com/api/v2.1/geocode?lat=" + lat + "&lon=" + long + "&user-key=" + zomKey,
-            method: "GET",
-            beforeSend: function(xhr){xhr.setRequestHeader('user-key', '04dffe13574d2caddf0a86ffa64f32a0');},
-        }).then(function (response3) {
-            console.log(response3);
-        });
+        // // Zomato query scripts and API key
+        // var zomBaseUrl = "https://developers.zomato.com/api/v2.1";
+        // var zomCallCity = "/cities&key=";
+        // var zomKey = "04dffe13574d2caddf0a86ffa64f32a0";
 
-     
-    </script>
+        // var corsAnywhere = "https://cors-anywhere.herokuapp.com/";
+
+        // $.ajax({
+        //     url:  "https://developers.zomato.com/api/v2.1/geocode?lat=" + lat + "&lon=" + long + "&user-key=" + zomKey,
+        //     method: "GET",
+        //     beforeSend: function(xhr){xhr.setRequestHeader('user-key', '04dffe13574d2caddf0a86ffa64f32a0');},
+        // }).then(function (response3) {
+        //     console.log(response3);
+        // });
+  -->
+
+
 
 </body>
 
