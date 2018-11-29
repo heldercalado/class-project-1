@@ -206,7 +206,7 @@
 
       myurl = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + result.results[0].place_id + "&fields=photos,name,rating,formatted_phone_number&key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo"
 
-      // "&inputtype=textquery&fields=photos,formatted_address&key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo&address"
+
       var corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/"
       $.ajax({
         url: corsAnywhereUrl + myurl,
@@ -343,7 +343,7 @@
       if (response.data.length > 0) {
         for (var i = 0; i < response.data.length; i++) {
           if (response.data[i].addresses[0] && response.data[i].addresses[0].city == city) {
-            $("#national-parks").append(response.data[i].fullName);
+            $("#national-parks").append("<p>" + response.data[i].fullName + "</p>");
             match = true;
           }
         }

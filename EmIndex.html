@@ -30,7 +30,7 @@
 
     <script>
 
-        NPS query scripts and API key
+        // NPS query scripts and API key
         var npsBaseUrl = "https://api.nps.gov/api/v1";
         var npsCallState = "/parks&stateCode=CA&key=";
         var npsCallVC = "/visitorcenters&stateCode=CA&key=";
@@ -59,7 +59,7 @@
         var corsAnywhere = "https://cors-anywhere.herokuapp.com/";
 
         $.ajax({
-            url:  "https://developers.zomato.com/api/v2.1/cities?q=San%20Diego&count=10&user-key=" + zomKey,
+            url:  "https://developers.zomato.com/api/v2.1/geocode?lat=" + lat + "&lon=" + long + "&user-key=" + zomKey,
             method: "GET",
             beforeSend: function(xhr){xhr.setRequestHeader('user-key', '04dffe13574d2caddf0a86ffa64f32a0');},
         }).then(function (response3) {
