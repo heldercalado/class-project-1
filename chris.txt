@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <title>LOCATIONS LOCATIONS</title>
+
+  <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+
+</head>
+
+<body>
+  <label for="name-input">location:</label>
+  <input class="form-control" id="name-input" type="text">
+  <button id="click-button" type="submit">Submit</button>
+
+
+
+  
+  <div id="recents"></div>
+
+  
+  
+
+</body>
+<script>
+    //  Firebase and initializing
+    var config = {
+        apiKey: "AIzaSyDTLBtenIBHxpKB6SwsW9DiFycE3FEAx1M",
+        authDomain: "project1-5ad1a.firebaseapp.com",
+        databaseURL: "https://project1-5ad1a.firebaseio.com",
+        projectId: "project1-5ad1a",
+        storageBucket: "project1-5ad1a.appspot.com",
+        messagingSenderId: "326238857032"
+      }
+    firebase.initializeApp(config);
+
+    /// Create a variable to reference the database
+    var database = firebase.database();
+
+    // Initial Variables (SET the first set IN FIREBASE FIRST)
+    // Note remember to create these same variables in Firebase!
+    var name = "";
+    var clickCounter = 1;
+    var arrTest=[];
+   var dbexixts =false;
+    // Click Button changes what is stored in firebase
+    $("#click-button").on("click", function(event) {
+        event.preventDefault();
+
+name = $("#name-input").val().trim();
+        database.ref().child('recentsearches').orderByChild('name').equalTo(name).once("value", function(snapshot) {
+    if (snapshot.val()===null){
+    
+     var obj = {
+    name: name,
+    clickcounter:1
+    }
+        database.ref('recentsearches').push(obj);
+    } else {
+       // snapshot.forEach(function (childSnapshot) {
+          
+        
+        
+        
+          
+        var testarr =snapshotToArray(snapshot);
+       
+        console.log(testarr[0].key);
+          database.ref("recentsearches/" +  testarr[0].key).update({ clickcounter: testarr[0].clickcounter + 1});
+          //db.ref("-Users/-KUanJA9egwmPsJCxXpv").update({ displayName: "New trainer" });
+       //});
+ 
+}
+ 
+});
+  
+});
+
+
+
+
+    // add to the database new city and update clickcounter
+  
+
+     // Change what is saved in firebase
+    // call the update function here
+   // console.log("city already  on database");
+
+
+    
+//logging the value of snap shot
+  
+    database.ref("/recentsearches").on("value", function(snapshot) {
+      
+
+ arrTest = snapshotToArray(snapshot);
+
+    
+      
+    console.log(arrTest);
+     
+
+      // Print the initial data to the console.
+    //   console.log(snapshot.val());
+    
+   
+
+      // Log the value of the various properties
+    //   console.log(snapshot.val().name);
+   
+      // Changing the HTML
+    //   $("#name").text(snapshot.val().name);
+
+      // when erros on page 
+    }, function(errorObject) {
+      console.log("error " + errorObject.code);
+    });
+
+database.ref("/recentsearches").on("child_added", function(snapshot){
+    // console.log(snapshot.val());
+
+    // var newDiv = $("<div>");
+    //     newDiv.append($("<div>").text(snapshot.val().name));
+    //         $("#recents").append(newDiv);
+});
+
+// whenever submit is pressed put data in firebase
+// what I need
+// when location is searched folder is created and data stored
+//and click counter is updated
+// when the same location is searched
+//click counter updates by one
+
+
+
+// check array if city exists already
+// if already exists call update funtion
+// searched location will stay the same, counter will update with +1
+//else add new city to data base
+
+
+
+
+//part two
+// when new location is searched new folder is created 
+// clickcounter is updated for that specific location
+
+    function snapshotToArray(snapshot) {
+       var returnArr = [];
+
+       snapshot.forEach(function (childSnapshot) {
+           var item = childSnapshot.val();
+           item.key = childSnapshot.key;
+
+           returnArr.push(item);
+
+       });
+
+       return returnArr;
+   }
+
+
+  </script>
+    
+
+</html>
