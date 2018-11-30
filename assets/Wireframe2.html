@@ -12,8 +12,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-    <title>Document</title>
 
+    <title>Document</title>
+    <script type="text/javascript" src="wireframe2.js"></script>
 </head>
 <style>
     .body{
@@ -42,9 +43,10 @@
 </style>
 
 <body class="body">
+
     <br>
     <br>
-<form class="container">
+    <form class="container">
         <div class="row">
             <div class="col">
 
@@ -61,29 +63,66 @@
     </form>
 
     <div class="container">
-    
-    <!-- <h1 class="display-4">You've Booked Your Trip!</h1>
+
+        <!-- <h1 class="display-4">You've Booked Your Trip!</h1>
             <p class="lead">Now Explore Your Destination...</p> -->
 
-    <br>
-    <br>
+        <br>
+        <br>
 
         <div class="row">
             <div class="col-lg-6">
                 <div class="card" style="width: 28rem;">
-                    <img class="card-img-top" src="http://placehold.it/150x150" alt="Card image cap">
+                    <img class="card-img-top" id="cardImg" src="http://placehold.it/150x150" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Destination Name</h5>
-                        <p class="card-text">Current weather conditions</p>
+                        <h5 class="card-title" id="cityName">Destination Name</h5>
+                        <p class="card-text" id="cardWeather">Current weather conditions</p>
+                        <ul>
+
+                            <li id='temp'></li>
+                            <li id="humidity"></li>
+                            <li id="wind"></li>
+
+
+                        </ul>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item1">census info</li>
-                        <li class="list-group-item2">census info</li>
-                        <li class="list-group-item3">census info</li>
+                        <li class="Accordian" id="cardAccordian1">
+                            <div class="card1">
+                                <div class="card1-header" id="cHeadingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#cCollapseOne"
+                                            aria-expanded="true" aria-controls="cCollapseOne">
+                                            <i class="fas fa-sun">Census Info</i>
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="cCollapseOne" class="collapse" aria-labelledby="cHeadingOne" data-parent="#cardAccordian1">
+                                    <div class="card-body">
+                                    <ul>
+                                        <li>
+                                            Population
+                                        </li>
+                                        <li>
+                                            Mean Income
+                                        </li>
+                                        <li>
+                                            Main Industry
+                                        </li>
+                                    </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+              
                     </ul>
-                    
                 </div>
+                </li>
+                </ul>
+
             </div>
+
 
             <div class="col-lg-6">
                 <div class="accordion" id="accordionExample">
@@ -102,10 +141,10 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <ul>
-                                            <li id="city"></li>
-                                            <li id='temp'></li>
-                                            <li id="humidity"></li>
-                                            <li id="wind"></li>
+                                           
+                                            <li id='temp2'></li>
+                                            <li id="humidity2"></li>
+                                            <li id="wind2"></li>
 
 
                                         </ul>
@@ -167,18 +206,7 @@
                             </div>
                             <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
                                 <div class="card-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                    richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                    brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                    sunt
-                                    aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch
-                                    et.
-                                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
-                                    sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
-                                    craft
-                                    beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
-                                    heard
-                                    of them accusamus labore sustainable VHS.
+                                    <li id="zomato"></li>
                                 </div>
                             </div>
                         </div>
@@ -193,18 +221,7 @@
                             </div>
                             <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
                                 <div class="card-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                    richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
-                                    brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-                                    sunt
-                                    aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch
-                                    et.
-                                    Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
-                                    sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
-                                    craft
-                                    beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
-                                    heard
-                                    of them accusamus labore sustainable VHS.
+                              
                                 </div>
                             </div>
                         </div>
@@ -215,6 +232,7 @@
             </div>
         </div>
     </div>
+    </div>
     <br>
     <br>
     <div class="row">
@@ -224,7 +242,7 @@
                 <div id="myCarousel" class="carousel slide">
                     <br>
                     <!-- Carousel items -->
-                    <div class="carousel-inner">
+                    <div class="carousel-inner" id="carousel">
                         <div class="item active">
                             <div class="row">
                                 <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image"
@@ -260,155 +278,42 @@
     </div>
     </div>
     <div class="modal" id="exampleModal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
 
-                    <div class="modal-header">
-                        <h5 class="modal-title">Loading your results , please wait</h5>
-                    </div>
-
-                    <div class="modal-body">
-                        <img src="./Loading_icon.gif" alt="" srcset="">
-                    </div>
-
+                <div class="modal-header">
+                    <h5 class="modal-title">Loading your results , please wait</h5>
                 </div>
+
+                <div class="modal-body">
+                    <img src="./Loading_icon2.gif" alt="" srcset="">
+                </div>
+
             </div>
         </div>
+    </div>
+
 
 </body>
 
 <script>
+$(document).ready(function () {
+    $('.carousel').carousel()
+    $("#btn1").on("click", function (e) {
+        e.preventDefault();
 
-    $(document).ready(function () {
-        $('.carousel').carousel()
-        $("#btn1").on("click", function (e) {
-            e.preventDefault();
+        var test = $('#queryval').val();
 
-            var test = $('#queryval').val();
-
-            var myUrl =
-                'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo&address=city%20of%20' +
-                test + '&sensor=false'
-            // loadDoc(myUrl , myFunction);
-            anotherquery(myUrl);
-        })
-
+        var myUrl =
+            'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo&address=city%20of%20' +
+            test + '&sensor=false'
+        // loadDoc(myUrl , myFunction);
+        anotherquery(myUrl);
     })
 
-
-
-
-
-
-    function anotherquery(requestUrl) {
-        $.ajax({
-            url: requestUrl,
-            method: 'GET',
-        }).done(function (result) {
-            //console.log(result);
-            console.log(result)
-            console.log("Request Status: " + result.status);
-            console.log("Place Name: " + result.results[0].formatted_address);
-            console.log("Place ID: " + result.results[0].place_id);
-            console.log("Lat: " + result.results[0].geometry.location.lat);
-            console.log("Lng: " + result.results[0].geometry.location.lng);
-            getCurrentWeather(result.results[0].formatted_address);
-            eventBrite(result.results[0].geometry.location.lat, result.results[0].geometry.location.lng);
-            myurl = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + result.results[0].place_id + "&fields=photos,name,rating,formatted_phone_number&key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo"
-
-            "&inputtype=textquery&fields=photos,formatted_address&key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo&address"
-            var corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/"
-            $.ajax({
-                url: corsAnywhereUrl + myurl,
-                method: 'GET',
-            }).done(function (result) {
-                //console.log(result);
-
-                console.log(result)
-                $("#target").empty();
-                for (var i = 0; i < result.result.photos.length; i++) {
-                    myurl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" +
-                        result.result.photos[i].photo_reference +
-                        "&key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo"
-                    if (i === 0) {
-                        $("#target").append("<div class='carousel-item active'><img class='d-block w-100' src='" + myurl + "' alt='First slide'></div>");
-                    } else {
-                        $("#target").append("<div class='carousel-item'><img class='d-block w-100' src='" + myurl + "' alt='First slide'></div>");
-
-                    }
-
-                    //$("#demo").append("<img src='"+myurl+"'>");
-
-                }
-
-
-            }).fail(function (err) {
-                throw err;
-            });
-
-        }).fail(function (err) {
-            throw err;
-        });
-    }
-    function getCurrentWeather(city) {
-        console.log(city);
-        var APIKey = "a1419d3616a13603e1c5b962606c26e2";
-
-        // Here we are building the URL we need to query the database
-        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
-
-        // Here we run our AJAX call to the OpenWeatherMap API
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        })
-            // We store all of the retrieved data inside of an object called "response"
-            .then(function (response) {
-
-                // Log the queryURL
-                console.log(queryURL);
-
-                // Log the resulting object
-                console.log(response);
-
-                // Transfer content to HTML
-                $("#city").text("City:" + response.name + " Weather Details:");
-                $("#wind").text("Wind Speed: " + response.wind.speed);
-                $("#humidity").text("Humidity: " + response.main.humidity);
-                $("#temp").text("Temperature (F) " + response.main.temp);
-
-                // Log the data in the console as well
-                console.log(city);
-                console.log("Wind Speed: " + response.wind.speed);
-                console.log("Humidity: " + response.main.humidity);
-                console.log("Temperature (F): " + response.main.temp);
-            });
-
-
-    }
-
-    function eventBrite(argLatitude, argLongitude) {
-
-        var token = 'SRIRFU3BOMH4X35QFAGN';
-        var $events = $("#events");
-
-        $.get('https://www.eventbriteapi.com/v3/events/search/?token=' + token + '&location.latitude=' + argLatitude + '&location.longitude=' + argLongitude + '&expand=venue', function (res) {
-            if (res.events.length) {
-                var s = "<ul class='eventList'>";
-                for (var i = 0; i < res.events.length; i++) {
-                    var event = res.events[i];
-                    console.dir(event);
-                    s += "<li><a href='" + event.url + "'>" + event.name.text + "</a> - " + event.description.text + "</li>";
-                }
-                s += "</ul>";
-                $events.html(s);
-                $('#exampleModal').modal('toggle');
-            } else {
-                $events.html("<p>Sorry, there are no upcoming events.</p>");
-            }
-        });
-
-    }
+})
 </script>
+
+
 
 </html>
