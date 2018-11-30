@@ -126,11 +126,11 @@ function snapshotToArray(snapshot) {
 }
 
 function getTopFiveCities(argArray) {
-    $("#topcities").empty();
+    $("#top5InnerAccordion").empty();
     for (var i = 0; i < 5; i++) {
         var myIndex = (argArray.length - 1) - i
         topFiveCities.push(argArray[myIndex]);
-        $("#topcities").append("<li><a href='#' class='btn btn-primary topcities' data-toggle='modal' data-target='#exampleModal' role='button'>"+ argArray[myIndex].name + "</a></li>")
+        $("#top5InnerAccordion").append("<li><a href='#' class='btn btn-primary topcities' data-toggle='modal' data-target='#exampleModal' role='button'>"+ argArray[myIndex].name + "</a></li>")
     }
     console.log(topFiveCities);
 
