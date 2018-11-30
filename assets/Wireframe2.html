@@ -77,45 +77,47 @@
                     <div class="card-body">
                         <h5 class="card-title" id="cityName">Destination Name</h5>
                         <p class="card-text" id="cardWeather">Current weather conditions</p>
+                        
                         <ul>
 
-                            <li id='temp'></li>
-                            <li id="humidity"></li>
-                            <li id="wind"></li>
+                            <li id='temp'>Temperature?</li>
+                            <li id="humidity">Humidity?</li>
+                            <li id="wind">Wind Speed?</li>
 
 
                         </ul>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="Accordian" id="cardAccordian1">
+                        <li class="Accordion" id="cardAccordion1">
                             <div class="card1">
                                 <div class="card1-header" id="cHeadingOne">
                                     <h5 class="mb-0">
-                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#cCollapseOne"
-                                            aria-expanded="true" aria-controls="cCollapseOne">
+                                        <button class="btn btn-link stats" type="button" data-toggle="collapse"
+                                            data-target="#cCollapseOne" aria-expanded="true" aria-controls="cCollapseOne">
                                             <i class="fas fa-sun">Census Info</i>
                                         </button>
                                     </h5>
                                 </div>
                                 <div id="cCollapseOne" class="collapse" aria-labelledby="cHeadingOne" data-parent="#cardAccordian1">
                                     <div class="card-body">
-                                    <ul>
-                                        <li>
-                                            Population
-                                        </li>
-                                        <li>
-                                            Mean Income
-                                        </li>
-                                        <li>
-                                            Main Industry
-                                        </li>
-                                    </ul>
+                                
+                                        <ul>
+                                            <li>
+                                                Population
+                                            </li>
+                                            <li>
+                                                Mean Income
+                                            </li>
+                                            <li>
+                                                Main Industry
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
 
                             </div>
                         </li>
-              
+
                     </ul>
                 </div>
                 </li>
@@ -127,21 +129,22 @@
             <div class="col-lg-6">
                 <div class="accordion" id="accordionExample">
                     <div class="card">
-                        <div class="card-header" id="headingOne">
+                        <div class="card-header" id="headingTop5">
                             <h5 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                                    aria-expanded="true" aria-controls="collapseOne">
-                                    <i class="fas fa-sun">Weather Forecast</i>
+                                <button class="btn btn-link stats" type="button" data-toggle="collapse" data-target="#collapseTop5"
+                                    data-stat="Top 5 Places" aria-expanded="true" aria-controls="collapseTop5">
+                                    <i class="fas fa-sun">Top 5 Searches</i>
                                 </button>
                             </h5>
                         </div>
 
-                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                            <div class="card-body">
-                                <div class="row">
+                        <div id="collapseTop5" class="collapse" aria-labelledby="headingTop5" data-parent="#accordionExample">
+                            <div class="card-body" >
+                                <div class="accordion" id="eventsInnerAccordion"></div>
+                                <!-- <div class="row">
                                     <div class="col-lg-12">
                                         <ul>
-                                           
+
                                             <li id='temp2'></li>
                                             <li id="humidity2"></li>
                                             <li id="wind2"></li>
@@ -149,134 +152,238 @@
 
                                         </ul>
                                     </div>
-                                </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header" id="headingEvents">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed stats" type="button" data-stat="Events"
+                                    data-toggle="collapse" data-target="#collapseEvents" aria-expanded="false"
+                                    aria-controls="collapseEvents">
+                                    <i class="fas fa-calendar-alt"> Events</i>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseEvents" class="collapse" aria-labelledby="headingEvents" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="accordion" id="eventsInnerAccordion"></div>
+
                             </div>
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header" id="headingTwo">
+                        <div class="card-header" id="headingRestaurants">
                             <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
-                                    aria-expanded="false" aria-controls="collapseTwo">
-                                    <i class="far fa-images"> Pictures </i>
+                                <button class="btn btn-link collapsed stats" type="button" data-stat="Restaurants"
+                                    data-toggle="collapse" data-target="#collapseRestaurants" aria-expanded="false"
+                                    aria-controls="collapseRestaurants">
+                                    <i class="fas fa-utensils"> Restaurants</i>
                                 </button>
                             </h5>
                         </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div id="collapseRestaurants" class="collapse" aria-labelledby="headingRestaurants" data-parent="#accordionExample">
+                            <div class="card-body" >
+                                <div class="accordian" id="eventsInnerAccordion"></div>
+                                <!-- <div class="row">
+                                    <div class="col-lg-12">
+                                        <ul>
+
+                                            <li id='temp2'></li>
+                                            <li id="humidity2"></li>
+                                            <li id="wind2"></li>
+
+
+                                        </ul>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <!-- <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-3">
+                                <li id="zomato">
+                                    <div class="col-lg-6">
+                                        <div class="accordion" id="accordionExample">
+                                            <div class="card">
+                                                <div class="card-header" id="headingOne">
+                                                    <h5 class="mb-0">
+                                                        <button class="btn btn-link stats" type="button" data-stat="..."
+                                                            data-toggle="collapse" data-target="#collapseOne"
+                                                            aria-expanded="true" aria-controls="collapseOne">
+                                                            <i class="fas fa-sun">Weather Forecast</i>
+                                                        </button>
+                                                    </h5>
+                                                </div>
 
-                                    </div>
-                                </div>
-                                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                                    <div class="carousel-inner" id="target">
+                                                
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header" id="headingTwo">
+                                                    <h5 class="mb-0">
+                                                        <button class="btn btn-link collapsed stats" data-stat="..."
+                                                            type="button" data-toggle="collapse" data-target="#collapseTwo"
+                                                            aria-expanded="false" aria-controls="collapseTwo">
+                                                            <i class="far fa-images"> Pictures </i>
+                                                        </button>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                                    data-parent="#accordionExample">
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-md-3">
 
-                                    </div>
-                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="carouselExampleSlidesOnly" class="carousel slide"
+                                                            data-ride="carousel">
+                                                            <div class="carousel-inner" id="target">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card">
+                                                    <div class="card-header" id="headingThree">
+                                                        <h5 class="mb-0">
+                                                            <button class="btn btn-link collapsed stats" data-stat="..."
+                                                                type="button" data-toggle="collapse" data-target="#collapseThree"
+                                                                aria-expanded="false" aria-controls="collapseThree">
+                                                                <i class="fas fa-calendar-alt"> Events</i>
+                                                            </button>
+                                                        </h5>
+                                                    </div>
+                                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                                        data-parent="#accordionExample">
+                                                        <div class="card-body">
+                                                            <ul>
+
+                                                                <li id="events"></li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card">
+                                                    <div class="card-header" id="headingFour">
+                                                        <h5 class="mb-0">
+                                                            <button class="btn btn-link collapsed stats" data-stat="..."
+                                                                type="button" data-toggle="collapse" data-target="#collapseFour"
+                                                                aria-expanded="false" aria-controls="collapseFour">
+                                                                <i class="fas fa-utensils"> Restaurants</i>
+                                                            </button>
+                                                        </h5>
+                                                    </div>
+                                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                                        data-parent="#accordionExample">
+                                                        <div class="card-body">
+                                <li id="zomato">
+
+                                </li>
                             </div>
+                        </div> -->
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingParks">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed stats" type="button" data-stat="National Parks"
+                                    data-toggle="collapse" data-target="#collapseParks" aria-expanded="false"
+                                    aria-controls="collapseParks">
+                                    <i class="fas fa-landmark"> National Parks</i>
+                                </button>
+                            </h5>
                         </div>
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                        data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        <i class="fas fa-calendar-alt"> Events</i>
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <ul>
+                        <div id="collapseParks" class="collapse" aria-labelledby="headingParks" data-parent="#accordionExample">
+                            <div class="card-body" >
+                                <div class="accordian" id="eventsInnerAccordion"></div>
 
-                                        <li id="events"></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingFour">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                        data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                        <i class="fas fa-utensils"> Restaurants</i>
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <li id="zomato"></li>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingFive">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                        data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                        <i class="fas fa-landmark"> National Parks</i>
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                                <div class="card-body">
-                              
-                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- end of col -->
                 </div>
+
+                <!-- end of col -->
             </div>
         </div>
+        </li>
+    </div>
+    </div>
+    </div>
+    <!-- <div class="card">
+        <div class="card-header" id="headingFive">
+            <h5 class="mb-0">
+                <button class="btn btn-link collapsed stats" type="button" data-toggle="collapse" data-stat="National Parks"
+                    data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    <i class="fas fa-landmark"> National Parks</i>
+                </button>
+            </h5>
+        </div>
+        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+            <div class="card-body">
+
+            </div>
+        </div>
+    </div> -->
+    <!-- </div> -->
+
+    <!-- end of col -->
+    <!-- </div>
+    </div>
+    </div>
     </div>
     </div>
     <br>
-    <br>
-    <div class="row">
+    <br> -->
+    <!-- <div class="row">
         <div class="col-lg-12">
             <br>
             <div class="well">
                 <div id="myCarousel" class="carousel slide">
                     <br>
-                    <!-- Carousel items -->
-                    <div class="carousel-inner" id="carousel">
-                        <div class="item active">
-                            <div class="row">
-                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image"
-                                            class="img-responsive"></a>
-                                </div>
-                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image"
-                                            class="img-responsive"></a>
-                                </div>
-                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image"
-                                            class="img-responsive"></a>
-                                </div>
-                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image"
-                                            class="img-responsive"></a>
-                                </div>
-                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image"
-                                            class="img-responsive"></a>
-                                </div>
-                                <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image"
-                                            class="img-responsive"></a>
-                                </div>
+
+                     <div class="carousel-inner" id="carousel">
+                        <div class="row"></div>
+                        <div class="carousel-item active">
+                            <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"></a>
                             </div>
-                            <!--/row-->
                         </div>
-                    </div>
-                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                        <div class="carousel-item active">
+                            <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"></a>
+                            </div>
+                        </div>
+                        <div class="carousel-item active">
+                            <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"></a>
+                            </div>
+                        </div>
+                        <div class="carousel-item active">
+                            <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"></a>
+                            </div>
+                        </div>
+                        <div class="carousel-item active">
+                            <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"></a>
+                            </div>
+                        </div>
+                        <div class="carousel-item active">
+                            <div class="col-sm-2"><a href="#x"><img src="http://placehold.it/150x150" alt="Image" class="img-responsive"></a>
+                            </div>
+                        </div>
+                    </div> -->
+    <!--/row-->
 
-                    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
-                </div>
+    <!-- </div>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
 
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
             </div>
 
         </div>
+
+    </div> -->
     </div>
-    </div>
+
     <div class="modal" id="exampleModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -297,21 +404,21 @@
 </body>
 
 <script>
-$(document).ready(function () {
-    $('.carousel').carousel()
-    $("#btn1").on("click", function (e) {
-        e.preventDefault();
+    $(document).ready(function () {
+        $('.carousel').carousel()
+        $("#btn1").on("click", function (e) {
+            e.preventDefault();
 
-        var test = $('#queryval').val();
+            var test = $('#queryval').val();
 
-        var myUrl =
-            'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo&address=city%20of%20' +
-            test + '&sensor=false'
-        // loadDoc(myUrl , myFunction);
-        anotherquery(myUrl);
+            var myUrl =
+                'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo&address=city%20of%20' +
+                test + '&sensor=false'
+            // loadDoc(myUrl , myFunction);
+            anotherquery(myUrl);
+        })
+
     })
-
-})
 </script>
 
 
