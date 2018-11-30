@@ -13,6 +13,7 @@
     crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
     crossorigin="anonymous">
+    <script src="./events.js"></script>
   <title>Document</title>
 </head>
 <style>
@@ -107,11 +108,7 @@
         </div>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
           <div class="card-body">
-            <ul>
-
-              <li id="events"></li>
-
-            </ul>
+            <div class="accordion" id="accordionevents"></div>
           </div>
         </div>
       </div>
@@ -197,7 +194,8 @@
       console.log("Lat: " + result.results[0].geometry.location.lat);
       console.log("Lng: " + result.results[0].geometry.location.lng);
       getCurrentWeather(result.results[0].formatted_address);
-      eventBrite(result.results[0].geometry.location.lat, result.results[0].geometry.location.lng);
+     // eventBrite(result.results[0].geometry.location.lat, result.results[0].geometry.location.lng);
+     events("accordionevents",result.results[0].geometry.location.lat, result.results[0].geometry.location.lng);
       restaurantInfo(result.results[0].geometry.location.lat, result.results[0].geometry.location.lng);
       npsInfo(result.results[0].address_components[2].short_name, result.results[0].address_components[0].long_name);
 
@@ -294,7 +292,7 @@ var corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/"
         var s = "<ul class='eventList'>";
         for (var i = 0; i < res.events.length; i++) {
           var event = res.events[i];
-          // console.dir(event);
+          console.dir(event);
           s += "<li><a href='" + event.url + "'>" + event.name.text + "</a> - " + event.description.text + "</li>";
         }
         s += "</ul>";
