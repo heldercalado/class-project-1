@@ -13,15 +13,29 @@
     crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
     crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
     <script src="./events.js"></script>
+    <script src="./restaurants.js"></script>
+    <script src="./db.js"></script>
   <title>Document</title>
 </head>
 <style>
 
   li {
     list-style: none;
+    text-transform: capitalize;
 }
 
+.btn {
+  margin: 5px ;
+  
+}
+.img_icons {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+}
 </style>
 
 <body>
@@ -43,11 +57,36 @@
 
     </div>
     <div class="accordion" id="accordionExample">
-
+        <div class="card">
+            <div class="card-header" id="headingsix">
+              <h5 class="mb-0">
+                <button class="btn btn-link  stats" type="button" data-stat="Top 5 Places"  data-toggle="collapse" data-target="#collapsesix"
+                  aria-expanded="true" aria-controls="collapsesix">
+                  
+                  <i class="fas fa-search-location" >Top 5 places</i>
+                </button>
+              </h5>
+            </div>
+    
+            <div id="collapsesix" class="collapse" aria-labelledby="headingsix" data-parent="#accordionExample">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-3">
+                    <ul id=topcities>
+                      
+    
+    
+                    </ul>
+                  </div>
+                </div>
+    
+              </div>
+            </div>
+          </div>
       <div class="card">
         <div class="card-header" id="headingfive">
           <h5 class="mb-0">
-            <button class="btn btn-link " type="button" data-toggle="collapse" data-target="#collapsefive"
+            <button class="btn btn-link stats" type="button" data-stat="weather" data-toggle="collapse" data-target="#collapsefive"
               aria-expanded="true" aria-controls="collapseOne">
               <i class="fas fa-sun">Weather</i>
             </button>
@@ -75,7 +114,7 @@
       <div class="card">
         <div class="card-header" id="headingOne">
           <h5 class="mb-0">
-            <button class="btn btn-link " type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+            <button class="btn btn-link stats" type="button" data-stat="Pictures" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
               aria-controls="collapseOne">
               <i class="far fa-images"> Pictures</i>
             </button>
@@ -100,7 +139,7 @@
       <div class="card">
         <div class="card-header" id="headingTwo">
           <h5 class="mb-0">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+            <button class="btn btn-link collapsed stats" data-stat="events" type="button" data-toggle="collapse" data-target="#collapseTwo"
               aria-expanded="false" aria-controls="collapseTwo">
               <i class="fas fa-calendar-alt"> Events</i>
             </button>
@@ -115,7 +154,7 @@
       <div class="card">
         <div class="card-header" id="headingThree">
           <h5 class="mb-0">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+            <button class="btn btn-link collapsed stats" data-stat="restaurants" type="button" data-toggle="collapse" data-target="#collapseThree"
               aria-expanded="false" aria-controls="collapseThree">
               <i class="fas fa-utensils"> Restaurants</i>
             </button>
@@ -123,13 +162,14 @@
         </div>
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
           <div class="card-body" id="restaurant">
+              <div class="accordion" id="accordionrestaurants"></div>
           </div>
         </div>
       </div>
       <div class="card">
         <div class="card-header" id="headingfour">
           <h5 class="mb-0">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsefour"
+            <button class="btn btn-link collapsed stats" data-stat="national parks" type="button" data-toggle="collapse" data-target="#collapsefour"
               aria-expanded="false" aria-controls="collapseThree">
               <i class="fas fa-landmark"> National Parks</i>
             </button>
@@ -163,16 +203,40 @@
 <script>
 
   $(document).ready(function () {
-    $('.carousel').carousel()
+   
+
+
+$("body").on("click" , ".stats", function(){
+
+
+statistics($(this).data("stat"))
+
+})
+
+$("body").on("click" , ".topcities", function(){
+ 
+  var name = $(this).text();
+  addCity(name.toLowerCase());
+ console.log ("function called");
+  var myUrl =
+        'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo&address=city%20of%20' +
+        name + '&sensor=false'
+        console.log (myUrl);
+anotherquery(myUrl);
+
+})
+
+
     $("#btn1").on("click", function (e) {
       e.preventDefault();
 
       var test = $('#queryval').val();
-
+addCity(test.toLowerCase());
       var myUrl =
         'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo&address=city%20of%20' +
         test + '&sensor=false'
       // loadDoc(myUrl , myFunction);
+      console.log (myUrl);
       anotherquery(myUrl);
     })
 
@@ -182,24 +246,26 @@
 
 
   function anotherquery(requestUrl) {
+    
     $.ajax({
       url: requestUrl,
       method: 'GET',
     }).done(function (result) {
       //console.log(result);
-      console.log(result)
-      console.log("Request Status: " + result.status);
-      console.log("Place Name: " + result.results[0].formatted_address);
-      console.log("Place ID: " + result.results[0].place_id);
-      console.log("Lat: " + result.results[0].geometry.location.lat);
-      console.log("Lng: " + result.results[0].geometry.location.lng);
+      // console.log(result)
+      // console.log("Request Status: " + result.status);
+      // console.log("Place Name: " + result.results[0].formatted_address);
+      // console.log("Place ID: " + result.results[0].place_id);
+      // console.log("Lat: " + result.results[0].geometry.location.lat);
+      // console.log("Lng: " + result.results[0].geometry.location.lng);
       getCurrentWeather(result.results[0].formatted_address);
      // eventBrite(result.results[0].geometry.location.lat, result.results[0].geometry.location.lng);
      events("accordionevents",result.results[0].geometry.location.lat, result.results[0].geometry.location.lng);
-      restaurantInfo(result.results[0].geometry.location.lat, result.results[0].geometry.location.lng);
+     // restaurantInfo(result.results[0].geometry.location.lat, result.results[0].geometry.location.lng);
+     restaurantInformation("accordionrestaurants",result.results[0].geometry.location.lat, result.results[0].geometry.location.lng);
       npsInfo(result.results[0].address_components[2].short_name, result.results[0].address_components[0].long_name);
 
-      console.log(result.results[0].address_components[2].short_name, result.results[0].address_components[0].long_name);
+      // console.log(result.results[0].address_components[2].short_name, result.results[0].address_components[0].long_name);
 
 
 
@@ -219,7 +285,7 @@ var corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/"
       }).done(function (result) {
         //console.log(result);
 
-        console.log("Google result: " + result)
+        //console.log("Google result: " + result)
         $("#target").empty();
         for (var i = 0; i < result.result.photos.length; i++) {
           myurl = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" +
@@ -246,7 +312,7 @@ var corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/"
     });
   }
   function getCurrentWeather(city) {
-    console.log(city);
+    //console.log(city);
     var APIKey = "a1419d3616a13603e1c5b962606c26e2";
 
     // Here we are building the URL we need to query the database
@@ -261,10 +327,10 @@ var corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/"
       .then(function (response) {
 
         // Log the queryURL
-        console.log(queryURL);
+       // console.log(queryURL);
 
         // Log the resulting object
-        console.log("Open weather: " + response);
+        //console.log("Open weather: " + response);
 
         // Transfer content to HTML
         $("#city").text("City:" + response.name + " Weather Details:");
@@ -273,63 +339,63 @@ var corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/"
         $("#temp").text("Temperature (F) " + response.main.temp);
 
         // Log the data in the console as well
-        console.log(city);
-        console.log("Wind Speed: " + response.wind.speed);
-        console.log("Humidity: " + response.main.humidity);
-        console.log("Temperature (F): " + response.main.temp);
+        // console.log(city);
+        // console.log("Wind Speed: " + response.wind.speed);
+        // console.log("Humidity: " + response.main.humidity);
+        // console.log("Temperature (F): " + response.main.temp);
       });
 
 
   }
 
-  function eventBrite(argLatitude, argLongitude) {
+  // function eventBrite(argLatitude, argLongitude) {
 
-    var token = 'SRIRFU3BOMH4X35QFAGN';
-    var $events = $("#events");
+  //   var token = 'SRIRFU3BOMH4X35QFAGN';
+  //   var $events = $("#events");
 
-    $.get('https://www.eventbriteapi.com/v3/events/search/?token=' + token + '&location.latitude=' + argLatitude + '&location.longitude=' + argLongitude + '&expand=venue', function (res) {
-      if (res.events.length) {
-        var s = "<ul class='eventList'>";
-        for (var i = 0; i < res.events.length; i++) {
-          var event = res.events[i];
-          console.dir(event);
-          s += "<li><a href='" + event.url + "'>" + event.name.text + "</a> - " + event.description.text + "</li>";
-        }
-        s += "</ul>";
-        $events.html(s);
-        $('#exampleModal').modal('toggle');
-      } else {
-        $events.html("<p>Sorry, there are no upcoming events.</p>");
-      }
-    });
+  //   $.get('https://www.eventbriteapi.com/v3/events/search/?token=' + token + '&location.latitude=' + argLatitude + '&location.longitude=' + argLongitude + '&expand=venue', function (res) {
+  //     if (res.events.length) {
+  //       var s = "<ul class='eventList'>";
+  //       for (var i = 0; i < res.events.length; i++) {
+  //         var event = res.events[i];
+  //         //console.dir(event);
+  //         s += "<li><a href='" + event.url + "'>" + event.name.text + "</a> - " + event.description.text + "</li>";
+  //       }
+  //       s += "</ul>";
+  //       $events.html(s);
+  //       $('#exampleModal').modal('toggle');
+  //     } else {
+  //       $events.html("<p>Sorry, there are no upcoming events.</p>");
+  //     }
+  //   });
 
-  }
+  // }
 
 
 
   var corsAnywhere = "https://cors-anywhere.herokuapp.com/";
 
-  function restaurantInfo(arglat, arglong) {
-    var zomBaseUrl = "https://developers.zomato.com/api/v2.1";
-    var zomCallCity = "/cities&key=";
-    var zomKey = "04dffe13574d2caddf0a86ffa64f32a0";
-    $("#restaurant").empty();
-    $.ajax({
-      url: "https://developers.zomato.com/api/v2.1/geocode?lat=" + arglat + "&lon=" + arglong + "&user-key=" + zomKey,
-      method: "GET",
-      beforeSend: function (xhr) { xhr.setRequestHeader('user-key', '04dffe13574d2caddf0a86ffa64f32a0'); },
-    }).then(function (response) {
-      console.log(response);
-      console.log("restaurant name: " + response.nearby_restaurants[0].restaurant.name);
-      $("#restaurant").append("<ul id='rest-list'></ul>");
-      console.log(response.nearby_restaurants[0].restaurant.cuisines);
-      console.log(response.nearby_restaurants.length);
+  // function restaurantInfo(arglat, arglong) {
+  //   var zomBaseUrl = "https://developers.zomato.com/api/v2.1";
+  //   var zomCallCity = "/cities&key=";
+  //   var zomKey = "04dffe13574d2caddf0a86ffa64f32a0";
+  //   $("#restaurant").empty();
+  //   $.ajax({
+  //     url: "https://developers.zomato.com/api/v2.1/geocode?lat=" + arglat + "&lon=" + arglong + "&user-key=" + zomKey,
+  //     method: "GET",
+  //     beforeSend: function (xhr) { xhr.setRequestHeader('user-key', '04dffe13574d2caddf0a86ffa64f32a0'); },
+  //   }).then(function (response) {
+  //     // console.log(response);
+  //     // console.log("restaurant name: " + response.nearby_restaurants[0].restaurant.name);
+  //     $("#restaurant").append("<ul id='rest-list'></ul>");
+  //     // console.log(response.nearby_restaurants[0].restaurant.cuisines);
+  //     // console.log(response.nearby_restaurants.length);
 
-      for (var i = 0; i < response.nearby_restaurants.length; i++) {
-        $("#restaurant").append("<ul id=#rest-list" + [i] + "><li>" + response.nearby_restaurants[i].restaurant.name + "</li></ul>");
-      }
-    });
-  }
+  //     for (var i = 0; i < response.nearby_restaurants.length; i++) {
+  //       $("#restaurant").append("<ul id=#rest-list" + [i] + "><li>" + response.nearby_restaurants[i].restaurant.name + "</li></ul>");
+  //     }
+  //   });
+  // }
 
 
 
@@ -343,8 +409,8 @@ var corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/"
       method: "GET",
       dataType: "JSON",
     }).done(function (response) {
-      console.log(response);
-      console.log(response.data.length);
+      // console.log(response);
+      // console.log(response.data.length);
       if (response.data.length > 0) {
         for (var i = 0; i < response.data.length; i++) {
           if (response.data[i].addresses[0] && response.data[i].addresses[0].city == city) {
@@ -357,6 +423,7 @@ var corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/"
         $("#national-parks").append("<p>Sorry, there are no National Parks in this city.</p>");
       }
     });
+  
   }
 
 

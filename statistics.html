@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script src="./events.js"></script>
+    <script src="./restaurants.js"></script>
+    <script src="./db.js"></script>
+    <title>Statistics</title>
+</head>
+<style>
+
+li {
+  text-transform: capitalize;
+  list-style: none;
+}
+
+</style>
+<body>
+    <div class="container">
+
+        <div class="jumbotron">
+            <h1 class="display-4">Statistics</h1>
+            <p class="lead">In this page you can find information about our app!</p>
+            <hr class="my-4">
+
+        </div>
+        
+            <div class="row w-90">
+                <div class="cold-md-4 ml-2">
+                        <div class="card" >
+                                <div class="card-header">
+                                  Cities
+                                </div>
+                                <div class="card-body">
+                                <ul id="statcities">
+                                        <li>Top Cities</li>
+                                        <li>Images</li>
+                                        <li>Events</li>
+                                        <li>Restaurants</li>
+                                        <li>National Park</li>
+                                        <li>Weather</li>
+                                    </ul>
+                              </div>
+                </div>
+                </div>
+                <div class="cold-md-4 ml-2">
+                        <div class="card" >
+                                <div class="card-header">
+                                  Clicked Tabs
+                                </div>
+                                <div class="card-body">
+                                  <ul id="clickedtabs">
+                                      
+                                  </ul>
+                              </div>
+
+                </div>
+            </div>
+                <div class="cold-md-4 ml-2">
+                        <div class="card" >
+                                <div class="card-header">
+                                  Visited Links
+                                </div>
+                                <div class="card-body">
+                                        <ul id="visitedlinks">
+                                                <li>Zomato</li>
+                                                <li>Eventbrite</li>
+                                                <li>Google Maps</li>
+                                                
+                                        </ul>
+                                </div>
+                              </div>
+
+                </div>
+            </div>
+        </div>
+    
+</div>
+</div>
+</body>
+<script>
+var config = {
+    apiKey: "AIzaSyAV_Z4VZjSYKDCzFfNbpUHzVRgwTyTQClE",
+    authDomain: "my-cbc-demo.firebaseapp.com",
+    databaseURL: "https://my-cbc-demo.firebaseio.com",
+    projectId: "my-cbc-demo",
+    storageBucket: "my-cbc-demo.appspot.com",
+    messagingSenderId: "856722307438"
+};
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(config);
+}
+/// Create a variable to reference the database
+var database = firebase.database();
+var topFiveCities = [];
+// Initial Variables (SET the first set IN FIREBASE FIRST)
+// Note remember to create these same variables in Firebase!
+var name = "";
+var clickCounter = 1;
+var arrTest = [];
+var arrStats = [];
+var dbexixts = false;
+// Click Button changes what is stored in firebase
+
+database.ref("/recentsearches").on("value", function (snapshot) {
+
+
+arrTest = snapshotToArray(snapshot);
+
+
+
+arrTest.sort(function (a, b) {
+    return a.clickcounter - b.clickcounter;
+
+})
+console.log(arrTest);
+getCities(arrTest);
+
+}, function (errorObject) {
+console.log("error " + errorObject.code);
+});
+
+database.ref("statstabs").on("value", function (snapshot) {
+
+
+arrStats = snapshotToArray(snapshot);
+
+
+
+arrStats.sort(function (a, b) {
+    return a.clickcounter - b.clickcounter;
+
+})
+console.log(arrTest);
+getClickedTabs(arrStats);
+
+}, function (errorObject) {
+console.log("error " + errorObject.code);
+});
+
+function snapshotToArray(snapshot) {
+var returnArr = [];
+
+snapshot.forEach(function (childSnapshot) {
+    var item = childSnapshot.val();
+    item.key = childSnapshot.key;
+
+    returnArr.push(item);
+
+});
+
+return returnArr;
+}
+
+function getClickedTabs(argArray) {
+$("#clickedtabs").empty();
+for (var i = argArray.length-1;  i >= 0 ; i--) {
+    
+    $("#clickedtabs").append("<li>" + argArray[i].name + " Clicks: "+argArray[i].clickcounter+"</li>")
+}
+}
+function getCities(argArray) {
+$("#statcities").empty();
+for (var i = argArray.length-1;  i >= 0 ; i--) {
+    
+    $("#statcities").append("<li>" + argArray[i].name + " Clicks: "+argArray[i].clickcounter+"</li>")
+}
+}
+
+
+
+
+
+
+</script>
+
+</html>
