@@ -50,8 +50,8 @@ function events(argElementTarget, argLatitude, argLongitude) {
         $("#eventbody" + i).append("<div class='row' id='eventcardbodyrow3" + i + "'></div>");
         $("#eventcardbodyrow3" + i).append("<div class='cold-md-12 ml-2'><p>Start: " + event.description.text + "</p></div>");
         $("#eventbody" + i).append("<div class='row' id='eventcardbodyrow4" + i + "'></div>");
-        $("#eventcardbodyrow4" + i).append("<div class='cold-md-12' md-auto><a href='" + event.url + "' target='_blank' class='btn btn-primary'>View in eventbrite</a></div>");
-        $("#eventcardbodyrow4" + i).append("<div class='cold-md-6 ml-2'><a href='https://www.google.com/maps/search/?api=1&query=" + eventLat + "," + eventLon + "' target='_blank' class=''><img class='img_icons' src='./assets/images/gmaps.png'></a></div>");
+        $("#eventcardbodyrow4" + i).append("<div class='cold-md-12' md-auto><a href='" + event.url + "' target='_blank' class='btn btn-primary refstats' data-ref='eventbrite'>View in eventbrite</a></div>");
+        $("#eventcardbodyrow4" + i).append("<div class='cold-md-6 ml-2 '><a href='https://www.google.com/maps/search/?api=1&query=" + eventLat + "," + eventLon + "' target='_blank' class=''><img class='img_icons refstats' data-ref='google maps' src='./assets/images/gmaps.png'></a></div>");
 
       }
 

@@ -75,9 +75,7 @@ li {
                                 </div>
                                 <div class="card-body">
                                         <ul id="visitedlinks">
-                                                <li>Zomato</li>
-                                                <li>Eventbrite</li>
-                                                <li>Google Maps</li>
+                                                
                                                 
                                         </ul>
                                 </div>
@@ -112,8 +110,22 @@ var name = "";
 var clickCounter = 1;
 var arrTest = [];
 var arrStats = [];
+var arrRef=[];
 var dbexixts = false;
 // Click Button changes what is stored in firebase
+database.ref("reftabs").on("value", function (snapshot) {
+
+
+arrRef = snapshotToArray(snapshot);
+
+
+
+arrRef.sort(function (a, b) {
+    return a.clickcounter - b.clickcounter;
+})
+getRefs(arrRef);
+
+});
 
 database.ref("/recentsearches").on("value", function (snapshot) {
 
@@ -144,7 +156,10 @@ arrStats.sort(function (a, b) {
     return a.clickcounter - b.clickcounter;
 
 })
+
 console.log(arrTest);
+
+
 getClickedTabs(arrStats);
 
 }, function (errorObject) {
@@ -177,6 +192,13 @@ $("#statcities").empty();
 for (var i = argArray.length-1;  i >= 0 ; i--) {
     
     $("#statcities").append("<li>" + argArray[i].name + " Clicks: "+argArray[i].clickcounter+"</li>")
+}
+}
+function getRefs(argArray) {
+$("#visitedlinks").empty();
+for (var i = argArray.length-1;  i >= 0 ; i--) {
+    
+    $("#visitedlinks").append("<li>" + argArray[i].name + " Clicks: "+argArray[i].clickcounter+"</li>")
 }
 }
 

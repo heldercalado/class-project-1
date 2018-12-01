@@ -45,8 +45,8 @@ function restaurantInformation(argElementTarget, arglat, arglong) {
                 $("#restaurantbody" + i).append("<div class='row' id='restaurantcardbodyrow3" + i + "'></div>");
                 //$("#restaurantcardbodyrow3"+i).append("<div class='cold-md-12 ml-2'><p>Start: "+restaurant.description.text+"</p></div>");
                 $("#restaurantbody" + i).append("<div class='row' id='restaurantcardbodyrow4" + i + "'></div>");
-                $("#restaurantcardbodyrow4" + i).append("<div class='cold-md-6' md-auto><a href='" + currentRestaurant.url + "' target='_blank' class='btn btn-primary'>View on Zomato</a></div>");
-                $("#restaurantcardbodyrow4" + i).append("<div class='cold-md-6 ml-2'><a href='https://www.google.com/maps/search/?api=1&query=" + restaurantLat + "," + restaurantLon + "' target='_blank' class=''><img class='img_icons' src='./assets/images/gmaps.png'></a></div>");
+                $("#restaurantcardbodyrow4" + i).append("<div class='cold-md-6' md-auto><a href='" + currentRestaurant.url + "' target='_blank' class='btn btn-primary refstats' data-ref='zomato'>View on Zomato</a></div>");
+                $("#restaurantcardbodyrow4" + i).append("<div class='cold-md-6 ml-2'><a href='https://www.google.com/maps/search/?api=1&query=" + restaurantLat + "," + restaurantLon + "' target='_blank' class=''><img class='img_icons refstats' data-ref='google maps' src='./assets/images/gmaps.png'></a></div>");
 
             }
 
