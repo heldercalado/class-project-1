@@ -185,16 +185,16 @@
 
 <script>
     $(document).ready(function () {
-        if (window.location.search) {
+        if (window.location.search!== '') {
             var myArr = window.location.search.split("")
             var mystring = ""
             for (var i = 2; i < myArr.length; i++) {
 
                 mystring += myArr[i];
 
-
+                
             }
-
+            history.pushState(null, "", location.href.split("?")[0])
             var name = getName();
             function getName(){
                 if (mystring.search("%20") !== -1){
@@ -228,6 +228,12 @@
         statistics($(this).data("stat"))
 
     })
+    $("body").on("click", ".refstats", function () {
+
+
+        referrals($(this).data("ref"))
+
+})
 
     $("body").on("click", ".topcities", function () {
 

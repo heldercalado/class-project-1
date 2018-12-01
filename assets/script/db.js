@@ -87,7 +87,40 @@ function statistics(argName) {
     });
 
 }
+function referrals(argName) {
 
+    console.log("function called for database");
+
+
+    database.ref().child('reftabs').orderByChild('name').equalTo(argName).once("value", function (snapshot) {
+        if (snapshot.val() === null) {
+
+            var obj = {
+                name: argName,
+                clickcounter: 1
+            }
+            database.ref('reftabs').push(obj);
+        } else {
+            // snapshot.forEach(function (childSnapshot) {
+
+
+
+
+
+            var testarr = snapshotToArray(snapshot);
+
+
+            database.ref("reftabs/" + testarr[0].key).update({
+                clickcounter: testarr[0].clickcounter + 1
+            });
+
+
+
+        }
+
+    });
+
+}
 
 
 
