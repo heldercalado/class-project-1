@@ -1,5 +1,6 @@
 function anotherquery(requestUrl) {
     $("#searchHelp").text("");
+    
     $.ajax({
         url: requestUrl,
         method: 'GET',
@@ -68,5 +69,5 @@ function anotherquery(requestUrl) {
         throw err;
     });
 
-    
+    window.location.href.replace(window.location.search,'');  
 }
