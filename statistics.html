@@ -13,200 +13,371 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
         crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-    <script src="./events.js"></script>
-    <script src="./restaurants.js"></script>
-    <script src="./db.js"></script>
+    <script src="./assets/script/events.js"></script>
+    <script src="./assets/script/restaurants.js"></script>
+    <script src="./assets/script/db.js"></script>
     <title>Statistics</title>
 </head>
 <style>
+    #mycharcities , #mychartabs , #mycharlins {
+        border-bottom: 1px solid black;
+    }
+    body {
+        background: lightgray;
+    }
 
-li {
-  text-transform: capitalize;
-  list-style: none;
-}
-
+    li {
+        text-transform: capitalize;
+        list-style: none;
+    }
+    #accordion {
+        margin-top: 10px;
+    }
+    .jumbotron {
+        height: 250px !important;
+    }
 </style>
+
 <body>
     <div class="container">
 
-        <div class="jumbotron">
-            <h1 class="display-4">Statistics</h1>
-            <p class="lead">In this page you can find information about our app!</p>
-            <hr class="my-4">
+            <nav class="navbar navbar-light bg-light">
+                    <a class="navbar-brand" href="#">Statistics</a>
+                  </nav>
+<br>
 
-        </div>
-        
-            <div class="row w-90">
-                <div class="cold-md-4 ml-2">
-                        <div class="card" >
-                                <div class="card-header">
-                                  Cities
-                                </div>
-                                <div class="card-body">
-                                <ul id="statcities">
-                                        <li>Top Cities</li>
-                                        <li>Images</li>
-                                        <li>Events</li>
-                                        <li>Restaurants</li>
-                                        <li>National Park</li>
-                                        <li>Weather</li>
-                                    </ul>
-                              </div>
-                </div>
-                </div>
-                <div class="cold-md-4 ml-2">
-                        <div class="card" >
-                                <div class="card-header">
-                                  Clicked Tabs
-                                </div>
-                                <div class="card-body">
-                                  <ul id="clickedtabs">
-                                      
-                                  </ul>
-                              </div>
 
-                </div>
-            </div>
-                <div class="cold-md-4 ml-2">
-                        <div class="card" >
-                                <div class="card-header">
-                                  Visited Links
+        <div class="row d-flex justify-content-center">
+            <div class="cold-md-4 ml-1">
+                <div class="card">
+                    <div class="card-header">
+                        Cities
+                    </div>
+                    <div class="card-body">
+                        <canvas id="myChartcities" width="325" height="400"></canvas>
+
+                        <div id="accordion">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                            aria-expanded="true" aria-controls="collapseOne">
+                                            Show All Cities
+                                        </button>
+                                    </h5>
                                 </div>
-                                <div class="card-body">
-                                        <ul id="visitedlinks">
-                                                
-                                                
+
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <ul id="statcities">
+
                                         </ul>
+                                    </div>
                                 </div>
-                              </div>
+                            </div>
 
+
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="cold-md-4 ml-1">
+                <div class="card">
+                    <div class="card-header">
+                        Clicked Tabs
+                    </div>
+                    <div class="card-body">
+                        <canvas id="myChartabs" width="325" height="400"></canvas>
+                        <div id="accordion">
+                            <div class="card">
+                                <div class="card-header" id="headingtwo">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapsetwo"
+                                            aria-expanded="true" aria-controls="collapsetwo">
+                                            Show All Tabs
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapsetwo" class="collapse" aria-labelledby="headingtwo" data-parent="#accordion">
+                                    <ul id="clickedtabs">
+
+                                    </ul>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="cold-md-4 ml-1">
+                <div class="card">
+                    <div class="card-header">
+                        Visited Links
+                    </div>
+                    <div class="card-body">
+                        <canvas id="myCharlinks" width="325" height="400"></canvas>
+                        <div id="accordion">
+                            <div class="card">
+                                <div class="card-header" id="headingthree">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapsethree"
+                                            aria-expanded="true" aria-controls="collapsethree">
+                                            Show Links Tracker
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapsethree" class="collapse" aria-labelledby="headingthree" data-parent="#accordion">
+                                    <ul id="visitedlinks">
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
         </div>
-    
-</div>
-</div>
+    </div>
+
+    <!-- </div>
+    </div> -->
 </body>
 <script>
-var config = {
-    apiKey: "AIzaSyAV_Z4VZjSYKDCzFfNbpUHzVRgwTyTQClE",
-    authDomain: "my-cbc-demo.firebaseapp.com",
-    databaseURL: "https://my-cbc-demo.firebaseio.com",
-    projectId: "my-cbc-demo",
-    storageBucket: "my-cbc-demo.appspot.com",
-    messagingSenderId: "856722307438"
-};
+    var config = {
+        apiKey: "AIzaSyAV_Z4VZjSYKDCzFfNbpUHzVRgwTyTQClE",
+        authDomain: "my-cbc-demo.firebaseapp.com",
+        databaseURL: "https://my-cbc-demo.firebaseio.com",
+        projectId: "my-cbc-demo",
+        storageBucket: "my-cbc-demo.appspot.com",
+        messagingSenderId: "856722307438"
+    };
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(config);
-}
-/// Create a variable to reference the database
-var database = firebase.database();
-var topFiveCities = [];
-// Initial Variables (SET the first set IN FIREBASE FIRST)
-// Note remember to create these same variables in Firebase!
-var name = "";
-var clickCounter = 1;
-var arrTest = [];
-var arrStats = [];
-var arrRef=[];
-var dbexixts = false;
-// Click Button changes what is stored in firebase
-database.ref("reftabs").on("value", function (snapshot) {
-
-
-arrRef = snapshotToArray(snapshot);
-
-
-
-arrRef.sort(function (a, b) {
-    return a.clickcounter - b.clickcounter;
-})
-getRefs(arrRef);
-
-});
-
-database.ref("/recentsearches").on("value", function (snapshot) {
+    if (!firebase.apps.length) {
+        firebase.initializeApp(config);
+    }
+    /// Create a variable to reference the database
+    var database = firebase.database();
+    var topFiveCities = [];
+    // Initial Variables (SET the first set IN FIREBASE FIRST)
+    // Note remember to create these same variables in Firebase!
+    var name = "";
+    var clickCounter = 1;
+    var arrTest = [];
+    var arrStats = [];
+    var arrRef = [];
+    var dbexixts = false;
+    var arrtopCitiesName = [];
+    var arrTopCitiesClicks = [];
+    var arrtabsName = [];
+    var arrtabsClicks = [];
+    var arrLinksClicks = [];
+    var arrLinksName = [];
+    // Click Button changes what is stored in firebase
+    database.ref("reftabs").on("value", function (snapshot) {
 
 
-arrTest = snapshotToArray(snapshot);
+        arrRef = snapshotToArray(snapshot);
 
 
 
-arrTest.sort(function (a, b) {
-    return a.clickcounter - b.clickcounter;
+        arrRef.sort(function (a, b) {
+            return a.clickcounter - b.clickcounter;
+        })
+        getRefs(arrRef);
 
-})
-console.log(arrTest);
-getCities(arrTest);
+    });
 
-}, function (errorObject) {
-console.log("error " + errorObject.code);
-});
-
-database.ref("statstabs").on("value", function (snapshot) {
+    database.ref("/recentsearches").on("value", function (snapshot) {
 
 
-arrStats = snapshotToArray(snapshot);
+        arrTest = snapshotToArray(snapshot);
 
 
 
-arrStats.sort(function (a, b) {
-    return a.clickcounter - b.clickcounter;
+        arrTest.sort(function (a, b) {
+            return a.clickcounter - b.clickcounter;
 
-})
+        })
 
-console.log(arrTest);
+        //console.log(arrTest);
+        getCities(arrTest);
+
+    }, function (errorObject) {
+        //console.log("error " + errorObject.code);
+    });
+
+    database.ref("statstabs").on("value", function (snapshot) {
 
 
-getClickedTabs(arrStats);
-
-}, function (errorObject) {
-console.log("error " + errorObject.code);
-});
-
-function snapshotToArray(snapshot) {
-var returnArr = [];
-
-snapshot.forEach(function (childSnapshot) {
-    var item = childSnapshot.val();
-    item.key = childSnapshot.key;
-
-    returnArr.push(item);
-
-});
-
-return returnArr;
-}
-
-function getClickedTabs(argArray) {
-$("#clickedtabs").empty();
-for (var i = argArray.length-1;  i >= 0 ; i--) {
-    
-    $("#clickedtabs").append("<li>" + argArray[i].name + " Clicks: "+argArray[i].clickcounter+"</li>")
-}
-}
-function getCities(argArray) {
-$("#statcities").empty();
-for (var i = argArray.length-1;  i >= 0 ; i--) {
-    
-    $("#statcities").append("<li>" + argArray[i].name + " Clicks: "+argArray[i].clickcounter+"</li>")
-}
-}
-function getRefs(argArray) {
-$("#visitedlinks").empty();
-for (var i = argArray.length-1;  i >= 0 ; i--) {
-    
-    $("#visitedlinks").append("<li>" + argArray[i].name + " Clicks: "+argArray[i].clickcounter+"</li>")
-}
-}
+        arrStats = snapshotToArray(snapshot);
 
 
 
+        arrStats.sort(function (a, b) {
+            return a.clickcounter - b.clickcounter;
+
+        })
+
+        //console.log(arrTest);
+
+
+        getClickedTabs(arrStats);
+
+    }, function (errorObject) {
+        //console.log("error " + errorObject.code);
+    });
+
+    function snapshotToArray(snapshot) {
+        var returnArr = [];
+
+        snapshot.forEach(function (childSnapshot) {
+            var item = childSnapshot.val();
+            item.key = childSnapshot.key;
+
+            returnArr.push(item);
+
+        });
+
+        return returnArr;
+    }
+
+    function getClickedTabs(argArray) {
+        $("#clickedtabs").empty();
+        arrtabsClicks = [];
+        arrtabsName = [];
+        for (var i = argArray.length - 1; i >= 0; i--) {
+            arrtabsClicks.push(argArray[i].clickcounter);
+            arrtabsName.push(argArray[i].name);
+            $("#clickedtabs").append("<li>" + argArray[i].name + " Clicks: " + argArray[i].clickcounter + "</li>")
+        }
+        buildtabsChart();
+    }
+
+    function getCities(argArray) {
+        var counter = 0;
+        arrTopCitiesClicks = [];
+        arrtopCitiesName = [];
+        $("#statcities").empty();
+        for (var i = argArray.length - 1; i >= 0; i--) {
+            if (counter < 5) {
+                arrTopCitiesClicks.push(argArray[i].clickcounter);
+                arrtopCitiesName.push(argArray[i].name);
+                counter++;
+            }
+            $("#statcities").append("<li>" + argArray[i].name + " Clicks: " + argArray[i].clickcounter + "</li>")
+        }
+        buildTopFiveCitiesChart();
+    }
+
+    function getRefs(argArray) {
+        $("#visitedlinks").empty();
+        arrLinksClicks = [];
+        arrLinksName = [];
+
+        for (var i = argArray.length - 1; i >= 0; i--) {
+            arrLinksName.push(argArray[i].name);
+            arrLinksClicks.push(argArray[i].clickcounter);
+            $("#visitedlinks").append("<li>" + argArray[i].name + " Clicks: " + argArray[i].clickcounter + "</li>")
+        }
+        buildlinksChart();
+    }
+
+    function buildTopFiveCitiesChart() {
+        var ctx = $("#myChartcities");
+        var data = {
+            datasets: [{
+                data: arrTopCitiesClicks,
+                backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffc300', '#ff5733'],
 
 
 
+            }],
+
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels: arrtopCitiesName,
+
+        };
+
+
+        var topFiveCitiesChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: {
+                title: {
+                    display: true,
+                    text: 'Top 5 most viewed Cities',
+                }
+            }
+        });
+    }
+
+    function buildtabsChart() {
+        var ctx = $("#myChartabs");
+        var data = {
+            datasets: [{
+                data: arrtabsClicks,
+                backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffc300', '#ff5733', '#39F213'],
+            }],
+            labels: arrtabsName,
+
+        };
+
+
+        var tabsChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: {
+                title: {
+                    display: true,
+                    text: 'Tabs Clicked Tracker',
+                }
+            }
+        });
+    }
+
+    function buildlinksChart() {
+        var ctx = $("#myCharlinks");
+        var data = {
+            datasets: [{
+                data: arrLinksClicks,
+                backgroundColor: ['#D35400', '#82E0AA', '#5DADE2'],
+            }],
+            labels: arrLinksName,
+
+        };
+
+
+        var linksChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: data,
+            options: {
+                title: {
+                    display: true,
+                    text: 'External Links clicked Tracker',
+                }
+            }
+        });
+    }
+
+
+
+    function list(item, itemindex) {
+        console.log(item.name);
+
+    }
 </script>
 
 </html>
