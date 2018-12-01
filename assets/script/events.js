@@ -34,9 +34,9 @@ function events(argElementTarget, argLatitude, argLongitude) {
         elementCard = "#" + cardId;
         //console.log(elementCard);
         $("#" + argElementTarget).append("<div class='card' id='" + cardId + "'></div>");
-        $(elementCard).append("<div class='card-header' id='eventcardheader" + i + "'></div>");
+        $(elementCard).append("<div class='card-header d-inline-block  text-truncate' style='max-width: 450px;' id='eventcardheader" + i + "'></div>");
         $("#eventcardheader" + i).append("<h5 class='mb-0' id='cardheadtitle" + i + "'></h5>");
-        $("#cardheadtitle" + i).append("<button class='btn btn-link' type='button' data-toggle='collapse' data-target='#eventcollapse" + i + "' aria-expanded='true' aria-controls='eventcollapse" + i + "'>" + event.name.text + "</button>");
+        $("#cardheadtitle" + i).append("<button class='btn btn-link ' type='button' data-toggle='collapse' data-target='#eventcollapse" + i + "' aria-expanded='true' aria-controls='eventcollapse" + i + "'><span class=''>" + event.name.text + "</span></button>");
         $(elementCard).append("<div id='eventcollapse" + i + "' class='collapse' aria-labelledby='eventcardheader" + i + "' data-parent='#" + argElementTarget + "'></div>");
         $("#eventcollapse" + i).append("<div class='card-body' id='eventbody" + i + "'></div>");
         $("#eventbody" + i).append("<div class='row' id='eventcardbodyrow1" + i + "'></div>");
@@ -51,7 +51,7 @@ function events(argElementTarget, argLatitude, argLongitude) {
         $("#eventcardbodyrow3" + i).append("<div class='cold-md-12 ml-2'><p>Start: " + event.description.text + "</p></div>");
         $("#eventbody" + i).append("<div class='row' id='eventcardbodyrow4" + i + "'></div>");
         $("#eventcardbodyrow4" + i).append("<div class='cold-md-12' md-auto><a href='" + event.url + "' target='_blank' class='btn btn-primary'>View in eventbrite</a></div>");
-        $("#eventcardbodyrow4" + i).append("<div class='cold-md-6 ml-2'><a href='https://www.google.com/maps/search/?api=1&query=" + eventLat + "," + eventLon + "' target='_blank' class=''><img class='img_icons' src='./gmaps.png'></a></div>");
+        $("#eventcardbodyrow4" + i).append("<div class='cold-md-6 ml-2'><a href='https://www.google.com/maps/search/?api=1&query=" + eventLat + "," + eventLon + "' target='_blank' class=''><img class='img_icons' src='./assets/images/gmaps.png'></a></div>");
 
       }
 
