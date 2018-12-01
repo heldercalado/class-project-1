@@ -13,66 +13,19 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
         crossorigin="anonymous">
+        <link rel="stylesheet" href="./assets/style/style.css">
     <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
-    <script src="./events.js"></script>
-    <script src="./restaurants.js"></script>
-    <script src="./db.js"></script>
+    <script src="./assets/script/db.js"></script>
+    <script src="./assets/script/main.js"></script>
+    <script src="./assets/script/events.js"></script>
+    <script src="./assets/script/restaurants.js"></script>
+    <script src="./assets/script/nps.js"></script>
+    <script src="./assets/script/weather.js"></script>
 
-    <title>Document</title>
-    <script type="text/javascript" src="wireframe2.js"></script>
+    <title>Travelling</title>
+
 </head>
-<style>
-    li {
-    list-style: none;
-    text-transform: capitalize;
-}
 
-.btn {
-  margin: 5px ;
-  
-}
-.car-image{
-width: 250px;
-height: 350px;
-}
-.img_icons {
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  margin: 0;
-}
-    .body{
-    background-image: url("https://wallpapertag.com/wallpaper/full/b/4/8/893459-cool-high-quality-background-images-1920x1080-for-retina.jpg");
-}
-.jumbotron{
-    background-image: url("https://wallpapertag.com/wallpaper/full/b/4/8/893459-cool-high-quality-background-images-1920x1080-for-retina.jpg");
-
-  
-}
-@media only screen and (min-width: 600px) {
-    .card {
-        width: 100%;
-    }
-    .accordion{
-        width: 100%;
-    }
-    
-}
-.display-4{
-    font-weight: bolder;
-    color: aquamarine;
-    
-}
-.lead{
-    font-weight: bold;
-    color:bisque;
-    
-}
-
-#collapseOne{
-    height: 200px;
-}
-</style>
 
 <body class="body">
 
@@ -83,7 +36,8 @@ height: 350px;
             <div class="col">
 
 
-                <input type="search" class="form-control" placeholder="Search" id="queryval" aria-label="Search">
+                <input type="search" class="form-control" placeholder="Search" aria-describedby="searchHelp" id="queryval" aria-label="Search">
+                <small id="searchHelp" class="form-text text-warning font-weight-bold"></small>
             </div>
             <br>
             <div class="row">
@@ -208,53 +162,56 @@ height: 350px;
                 </div>
             </div>
         </div>
-   
 
-    <div class="modal" id="exampleModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
 
-                <div class="modal-header">
-                    <h5 class="modal-title">Loading your results , please wait</h5>
+        <div class="modal" id="exampleModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Loading your results , please wait</h5>
+                    </div>
+
+                    <div class="modal-body">
+                        <img src="./assets/images/Loading_icon2.gif" alt="" srcset="">
+                    </div>
+
                 </div>
-
-                <div class="modal-body">
-                    <img src="./Loading_icon2.gif" alt="" srcset="">
-                </div>
-
             </div>
         </div>
-    </div>
 
 
 </body>
 
 <script>
     $(document).ready(function () {
-        var myArr = window.location.search.split("")
-        var mystring=""
-        for (var i=2; i < myArr.length;i++ ){
+        if (window.location.search) {
+            var myArr = window.location.search.split("")
+            var mystring = ""
+            for (var i = 2; i < myArr.length; i++) {
 
-                mystring+=myArr[i];
+                mystring += myArr[i];
 
 
-        }
-        
-      
-        
-        
-      var name = mystring;
-        addCity(name.toLowerCase());
-        console.log("function called");
-        var myUrl =
-            'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo&address=city%20of%20' +
-            name + '&sensor=false'
+            }
+
+            var name = getName();
+            function getName(){
+                if (mystring.search("%20") !== -1){
+                    return mystring.replace("%20" , " ");
+                }else {
+                    return mystring;
+                };
+            }
+            console.log("function called: Name = " + name);
+            var myUrl =
+                'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo&address=city%20of%20' +
+                name + '&sensor=false'
             $('#exampleModal').modal('toggle');
             console.log(myUrl);
-        anotherquery(myUrl);  
-        
-        //console.log(getUrlParameter(window.location.search));
+            anotherquery(myUrl);
 
+            }
 
 
     })
@@ -275,7 +232,7 @@ height: 350px;
     $("body").on("click", ".topcities", function () {
 
         var name = $(this).text();
-        addCity(name.toLowerCase());
+        
         console.log("function called");
         var myUrl =
             'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo&address=city%20of%20' +
@@ -290,7 +247,7 @@ height: 350px;
         e.preventDefault();
 
         var test = $('#queryval').val();
-        addCity(test.toLowerCase());
+
         var myUrl =
             'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo&address=city%20of%20' +
             test + '&sensor=false'
@@ -299,199 +256,7 @@ height: 350px;
         anotherquery(myUrl);
     })
 
-    //})
-
-
-
-
-    function anotherquery(requestUrl) {
-
-        $.ajax({
-            url: requestUrl,
-            method: 'GET',
-        }).done(function (result) {
-
-            getCurrentWeather(result.results[0].formatted_address);
-
-            events("eventsInnerAccordion", result.results[0].geometry.location.lat, result.results[0].geometry.location
-                .lng);
-
-            restaurantInformation("restaurantsInnerAccordion", result.results[0].geometry.location.lat, result.results[
-                0].geometry.location.lng);
-            npsInfo(result.results[0].address_components[2].short_name, result.results[0].address_components[0]
-                .long_name);
-
-
-
-
-
-            myurl = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + result.results[0].place_id +
-                "&fields=photos,name,rating,formatted_phone_number&key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo"
-            "&inputtype=textquery&fields=photos,formatted_address&key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo&address"
-            var corsAnywhereUrl = "https://cors-anywhere.herokuapp.com/"
-            $.ajax({
-                url: corsAnywhereUrl + myurl,
-                method: 'GET',
-            }).done(function (result) {
-                //console.log(result);
-
-                //console.log("Google result: " + result)
-                $("#target").empty();
-                for (var i = 0; i < result.result.photos.length; i++) {
-                    myurl =
-                        "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" +
-                        result.result.photos[i].photo_reference +
-                        "&key=AIzaSyBK9jkFfnWFcee-sTKz_Y14T4RMu_SBbuo"
-                    if (i === 0) {
-                        $("#target").append(
-                            "<div class='carousel-item active'><img class='d-block w-100 car-image' src='" +
-                            myurl + "' alt='First slide'></div>");
-                    } else {
-                        $("#target").append(
-                            "<div class='carousel-item'><img class='d-block w-100 car-image' src='" +
-                            myurl +
-                            "' alt='First slide'></div>");
-
-                    }
-
-                    //$("#demo").append("<img src='"+myurl+"'>");
-
-                }
-
-
-            }).fail(function (err) {
-                throw err;
-            });
-
-        }).fail(function (err) {
-            throw err;
-        });
-    }
-
-    function getCurrentWeather(city) {
-        //console.log(city);
-        var APIKey = "a1419d3616a13603e1c5b962606c26e2";
-
-        // Here we are building the URL we need to query the database
-        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIKey;
-
-        // Here we run our AJAX call to the OpenWeatherMap API
-        $.ajax({
-                url: queryURL,
-                method: "GET"
-            })
-            // We store all of the retrieved data inside of an object called "response"
-            .then(function (response) {
-
-                // Log the queryURL
-                // console.log(queryURL);
-
-                // Log the resulting object
-                //console.log("Open weather: " + response);
-
-                // Transfer content to HTML
-                $("#cityName").text(response.name + " Weather Details:");
-                $("#wind").text("Wind Speed: " + response.wind.speed);
-                $("#humidity").text("Humidity: " + response.main.humidity);
-                $("#temp").text("Temperature (F) " + response.main.temp);
-
-                // Log the data in the console as well
-                // console.log(city);
-                // console.log("Wind Speed: " + response.wind.speed);
-                // console.log("Humidity: " + response.main.humidity);
-                // console.log("Temperature (F): " + response.main.temp);
-            });
-
-
-    }
-
-    // function eventBrite(argLatitude, argLongitude) {
-
-    //   var token = 'SRIRFU3BOMH4X35QFAGN';
-    //   var $events = $("#events");
-
-    //   $.get('https://www.eventbriteapi.com/v3/events/search/?token=' + token + '&location.latitude=' + argLatitude + '&location.longitude=' + argLongitude + '&expand=venue', function (res) {
-    //     if (res.events.length) {
-    //       var s = "<ul class='eventList'>";
-    //       for (var i = 0; i < res.events.length; i++) {
-    //         var event = res.events[i];
-    //         //console.dir(event);
-    //         s += "<li><a href='" + event.url + "'>" + event.name.text + "</a> - " + event.description.text + "</li>";
-    //       }
-    //       s += "</ul>";
-    //       $events.html(s);
-    //       $('#exampleModal').modal('toggle');
-    //     } else {
-    //       $events.html("<p>Sorry, there are no upcoming events.</p>");
-    //     }
-    //   });
-
-    // }
-
-
-
-    var corsAnywhere = "https://cors-anywhere.herokuapp.com/";
-
-    // function restaurantInfo(arglat, arglong) {
-    //   var zomBaseUrl = "https://developers.zomato.com/api/v2.1";
-    //   var zomCallCity = "/cities&key=";
-    //   var zomKey = "04dffe13574d2caddf0a86ffa64f32a0";
-    //   $("#restaurant").empty();
-    //   $.ajax({
-    //     url: "https://developers.zomato.com/api/v2.1/geocode?lat=" + arglat + "&lon=" + arglong + "&user-key=" + zomKey,
-    //     method: "GET",
-    //     beforeSend: function (xhr) { xhr.setRequestHeader('user-key', '04dffe13574d2caddf0a86ffa64f32a0'); },
-    //   }).then(function (response) {
-    //     // console.log(response);
-    //     // console.log("restaurant name: " + response.nearby_restaurants[0].restaurant.name);
-    //     $("#restaurant").append("<ul id='rest-list'></ul>");
-    //     // console.log(response.nearby_restaurants[0].restaurant.cuisines);
-    //     // console.log(response.nearby_restaurants.length);
-
-    //     for (var i = 0; i < response.nearby_restaurants.length; i++) {
-    //       $("#restaurant").append("<ul id=#rest-list" + [i] + "><li>" + response.nearby_restaurants[i].restaurant.name + "</li></ul>");
-    //     }
-    //   });
-    // }
-
-
-
-    // Call the NPS API
-    function npsInfo(state, city) {
-        npsUrl = "https://api.nps.gov/api/v1/parks?stateCode=" + state +
-            "&limit=50&start=1&key=qpWelJUKpo0rWmkucsjPsEXnvkdRfGwQvja86FWo&fields=addresses"
-        var match = false;
-        $("#nationalparkInnerAccordion").empty();
-        $.ajax({
-            url: npsUrl,
-            method: "GET",
-            dataType: "JSON",
-        }).done(function (response) {
-            // console.log(response);
-            // console.log(response.data.length);
-            if (response.data.length > 0) {
-                for (var i = 0; i < response.data.length; i++) {
-                    if (response.data[i].addresses[0] && response.data[i].addresses[0].city == city) {
-                        $("#nationalparkInnerAccordion").append("<p>" + response.data[i].fullName + "</p>");
-                        match = true;
-                    }
-                }
-            }
-            if (!match) {
-                $("#nationalparkInnerAccordion").append(
-                    "<p>Sorry, there are no National Parks in this city.</p>");
-            }
-        });
-
-    }
-
-
-    function getUrlParameter(name) {
-        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-        var results = regex.exec(location.search);
-        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-    };
+   
 </script>
 
 

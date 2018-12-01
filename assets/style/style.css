@@ -1,0 +1,53 @@
+li {
+    list-style: none;
+    text-transform: capitalize;
+}
+
+.btn {
+  margin: 5px ;
+  
+}
+.car-image{
+width: 250px;
+height: 350px;
+}
+.img_icons {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+}
+    .body{
+    background-image: url("https://wallpapertag.com/wallpaper/full/b/4/8/893459-cool-high-quality-background-images-1920x1080-for-retina.jpg");
+}
+.jumbotron{
+    background-image: url("https://wallpapertag.com/wallpaper/full/b/4/8/893459-cool-high-quality-background-images-1920x1080-for-retina.jpg");
+
+  
+}
+@media only screen and (min-width: 600px) {
+    .card {
+        width: 100%;
+    }
+    .accordion{
+        width: 100%;
+    }
+    .car-image {
+        width: 100%;
+    }
+    
+}
+.display-4{
+    font-weight: bolder;
+    color: aquamarine;
+    
+}
+.lead{
+    font-weight: bold;
+    color:bisque;
+    
+}
+
+#collapseOne{
+    height: 200px;
+}
