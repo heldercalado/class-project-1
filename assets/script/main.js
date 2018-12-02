@@ -75,7 +75,7 @@ function anotherquery(requestUrl) {
 function clearFields(){
 
     $("#target").empty();
-    $("#cityname").text('') ;
+    $("#cityName").text('') ;
     $("#temp").empty();
     $("#wind").empty();
     $("#humidity").empty();
@@ -83,7 +83,7 @@ function clearFields(){
     $("#eventsInnerAccordion").empty();
     $("#restaurantsInnerAccordion").empty();
     $("#nationalparkInnerAccordion").empty();
-    $("#cardWeather").empty();
+    $("#cardWeather").text('');
     //$("#").empty();
     
 }
