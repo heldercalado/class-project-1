@@ -24,7 +24,7 @@ function getCurrentWeather(city) {
             $("#wind").text("Wind Speed: " + response.wind.speed);
             $("#humidity").text("Humidity: " + response.main.humidity);
             $("#temp").text("Temperature (F) " + response.main.temp);
-
+            $("#cardWeather").text("Currently:");
             // Log the data in the console as well
             // console.log(city);
             // console.log("Wind Speed: " + response.wind.speed);

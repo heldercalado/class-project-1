@@ -204,7 +204,3 @@ function buildlinksChart() {
 
 
 
-function list(item, itemindex) {
-    console.log(item.name);
-
-}
