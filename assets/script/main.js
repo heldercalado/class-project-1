@@ -63,6 +63,9 @@ function anotherquery(requestUrl) {
     }else {
         $("#searchHelp").text("** City Not Found **")
         $('#exampleModal').modal('toggle');
+        
+        clearFields();
+
     }
     // end of function here
     }).fail(function (err) {
@@ -70,4 +73,19 @@ function anotherquery(requestUrl) {
     });
 
     window.location.href.replace(window.location.search,'');  
+}
+function clearFields(){
+
+    $("#target").empty();
+    $("#cityName").text('') ;
+    $("#temp").empty();
+    $("#wind").empty();
+    $("#humidity").empty();
+    $("#queryval").val('');
+    $("#eventsInnerAccordion").empty();
+    $("#restaurantsInnerAccordion").empty();
+    $("#nationalparkInnerAccordion").empty();
+    $("#cardWeather").text('');
+    //$("#").empty();
+    
 }

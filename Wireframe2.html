@@ -36,7 +36,7 @@
             <div class="col">
 
 
-                <input type="search" class="form-control" placeholder="Search" aria-describedby="searchHelp" id="queryval" aria-label="Search">
+                <input type="search" class="form-control" placeholder="City" aria-describedby="searchHelp" id="queryval" aria-label="Search">
                 <small id="searchHelp" class="form-text text-warning font-weight-bold"></small>
             </div>
             <br>
@@ -71,9 +71,9 @@
 
                         <ul>
 
-                            <li id='temp'>Temperature?</li>
-                            <li id="humidity">Humidity?</li>
-                            <li id="wind">Wind Speed?</li>
+                            <li id='temp'></li>
+                            <li id="humidity"></li>
+                            <li id="wind"></li>
 
 
                         </ul>
@@ -185,6 +185,16 @@
 
 <script>
     $(document).ready(function () {
+        $("#queryval").keypress(function(event){
+        var inputValue = event.which;
+        // allow letters and whitespaces only.
+        if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0 && inputValue != 13)) { 
+            event.preventDefault(); 
+        }
+    });
+
+
+
         if (window.location.search!== '') {
             var myArr = window.location.search.split("")
             var mystring = ""
@@ -261,6 +271,9 @@
         console.log(myUrl);
         anotherquery(myUrl);
     })
+
+
+
 
    
 </script>
