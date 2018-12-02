@@ -36,7 +36,7 @@
             <div class="col">
 
 
-                <input type="search" class="form-control" placeholder="Search" aria-describedby="searchHelp" id="queryval" aria-label="Search">
+                <input type="search" class="form-control" placeholder="City" aria-describedby="searchHelp" id="queryval" aria-label="Search">
                 <small id="searchHelp" class="form-text text-warning font-weight-bold"></small>
             </div>
             <br>
@@ -188,7 +188,7 @@
         $("#queryval").keypress(function(event){
         var inputValue = event.which;
         // allow letters and whitespaces only.
-        if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) { 
+        if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0 && inputValue != 13)) { 
             event.preventDefault(); 
         }
     });

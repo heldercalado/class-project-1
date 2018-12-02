@@ -63,7 +63,9 @@ function anotherquery(requestUrl) {
     }else {
         $("#searchHelp").text("** City Not Found **")
         $('#exampleModal').modal('toggle');
+        
         clearFields();
+
     }
     // end of function here
     }).fail(function (err) {
@@ -79,7 +81,7 @@ function clearFields(){
     $("#temp").empty();
     $("#wind").empty();
     $("#humidity").empty();
-    
+    $("#queryval").val('');
     $("#eventsInnerAccordion").empty();
     $("#restaurantsInnerAccordion").empty();
     $("#nationalparkInnerAccordion").empty();
